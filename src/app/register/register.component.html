@@ -1,0 +1,23 @@
+<div class="page-background h-100 d-flex justify-content-center align-items-center">
+    <div class="register-form-width bg-white rounded shadow-sm">
+      <h1 class="page-title text-center m-0 pt-2 pb-3">Register</h1>
+<form [formGroup]="registerForm">
+  <div class="input-group mb-3">
+     <input type="text" class="form-control" formControlName="name" autofocus placeholder="Enter your Name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+   </div>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" formControlName="email" autofocus placeholder="Enter your email" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  </div>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" formControlName="phone" autofocus placeholder="Enter your contact number" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  </div>
+   <div class="input-group mb-3">
+     <input type="text" class="form-control" formControlName="jobName" placeholder="Enter your favourite job" aria-label="Recipient's username" aria-describedby="basic-addon2">
+   </div>
+   <div class="input-group mb-3">
+     <input type="text" class="form-control" formControlName="jobDescription" placeholder="Job description" aria-label="Recipient's username" aria-describedby="basic-addon2">
+   </div>
+   <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary btn-block" (click)="registerUser()">Register</button>
+  </form>
+ </div>
+</div>

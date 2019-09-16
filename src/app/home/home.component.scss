@@ -45,12 +45,12 @@
   font-size: 12px;
 }
 
-.section-heading {
-  color: #479099;
-  margin: 0;
-  font-weight: 900;
-  font-size: 20px
-}
+// .section-heading {
+//   color: #479099;
+//   margin: 0;
+//   font-weight: 900;
+//   font-size: 20px
+// }
 
 .profile-basic-info {
     height: 126px;
@@ -82,4 +82,37 @@
 .user-description {
   font-size: 14px;
   color: #fff;
+}
+
+.custom-border-bottom-2px {
+  border-bottom: 2px solid #479099;
+}
+
+.section-header {
+  margin: 0;
+  font-size: 20px;
+  color: #479099;
+  font-weight: 900;
+}
+
+.skill-style {
+  height: 30px;
+  border-radius: 12px;
+  margin: 0 10px 10px 0;
+  background: #479099;
+  line-height: 1;
+  color: #fff;
+  padding: 6px 15px;
+}
+
+
+.remove-icon {
+  color: grey;
+  position: absolute;
+  right: 10px;
+  top: 4px;
+}
+
+.remove-icon:hover {
+  color: red;
 }
