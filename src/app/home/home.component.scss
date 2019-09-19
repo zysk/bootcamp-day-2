@@ -1,118 +1,12 @@
-
-
-.profile-image {
-  background: url(../../assets/photo.jpeg);
-  height: 250px;
-  width: 250px;
-  border: 1px solid #d3d3d3;
-  border-radius: 50%;
-  margin: 0 auto 0 30px;
-  width: 126px!important;
-  height: 126px!important;
-  max-width: 180px!important;
-  max-height: 180px!important;
-  background-size: 100% 100%;
-  // background: green;
+.bg-blue {
+  background-color: #3b5998
 }
-
-.ml-30 {
-  margin-left: 30px;
+.text-blue {
+  color: #3b5998;
 }
-
-.page-heading {
-  font-size: 20px;
-  color: #fff;
-  font-weight: 600;
-  padding: 20px 0;
-  margin: 0;
-  line-height: 2;
+.skill {
+  background-color: #3b5998;
 }
-
-.page-background {
-  background: rgba(49, 59, 71, 1);
-}
-
-.icon-color {
-  color: #479099;
-}
-
-.mobile-size {
-  font-size: 25px;
-}
-
-.icon-title{
-  color: #000;
-  font-size: 12px;
-}
-
-// .section-heading {
-//   color: #479099;
-//   margin: 0;
-//   font-weight: 900;
-//   font-size: 20px
-// }
-
-.profile-basic-info {
-    height: 126px;
-    background: #45919b;
-}
-
-.user-name {
-  font-size: 35px;
-  color: #fff;
-  margin: 0;
-  // padding: 10px 0;
-}
-
-.user-designation {
-  font-size: 18px;
-  color: #fff;
-  margin: 0;
-  // padding: 10px 0;
-}
-
-.custom-border-bottom {
-      width: 202.5px;
-      margin-top: 6px;
-      margin-bottom: 6px;
-      background-color: #fff;
-      height: 2px;
-}
-
-.user-description {
-  font-size: 14px;
-  color: #fff;
-}
-
-.custom-border-bottom-2px {
-  border-bottom: 2px solid #479099;
-}
-
-.section-header {
-  margin: 0;
-  font-size: 20px;
-  color: #479099;
-  font-weight: 900;
-}
-
-.skill-style {
-  height: 30px;
-  border-radius: 12px;
-  margin: 0 10px 10px 0;
-  background: #479099;
-  line-height: 1;
-  color: #fff;
-  padding: 6px 15px;
-}
-
-
-.remove-icon {
-  color: grey;
-  position: absolute;
-  right: 10px;
-  top: 4px;
-}
-
-.remove-icon:hover {
-  color: red;
+.underline {
+  height: 2px;
 }

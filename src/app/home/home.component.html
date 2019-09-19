@@ -1,119 +1,320 @@
- <div class="page-background h-100 d-flex flex-column">
-   <div>
-     <h1 class="page-heading text-center">My Resume</h1>
-   </div>
-   <div class="container available-content-height">
-    <div class="row h-100 position-relative m-0 pt-4 bg-white">
-      <div class="col-3 h-100">
-        <!-- <div class="image-bg"> -->
-          <div class="profile-image">
+<div class="container">
+  <div class="row">
+    <!-- Contact and Skills section -->
+    <div class="col-md-3">
+      <!-- Your profile photo -->
+      <img src="../../assets/profile.png" alt="Profile image" class="img-fluid rounded-circle">
+      <!-- End profile photo section -->
 
+      <!-- Contact details -->
+      <section class="contact-details mt-5">
+        <p class="email">
+          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          {{userData.email}}
+        </p>
+        <p class="email">
+          <i class="fa fa-phone" aria-hidden="true"></i>
+          {{userData.phone}}
+        </p>
+      </section>
+      <!-- End Contact details -->
+
+      <!-- Skills section -->
+      <section class="skills-section mb-4">
+        <h3 class="h5 text-uppercase text-blue d-inline">Skills &nbsp;</h3>
+        <span class="icon-color cursor-pointer text-right" (click)="addingNewSkill = true">
+          <i class="fa fa-plus text-blue"></i>
+        </span>
+        <hr class="underline my-2 bg-blue w-50 mx-0 text-left">
+        <div class="input-group mb-3 pt-2" *ngIf="addingNewSkill">
+          <input type="text" [(ngModel)]="newSkillName" autofocus class="form-control" placeholder="Angular"
+            aria-label="Username" aria-describedby="basic-addon1">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+              (click)="addNewSkill()">Save</button>
           </div>
-          <div class="d-flex align-items-center ml-30">
-            <i class="fa fa-envelope icon-color"></i>
-            <span class="icon-title pl-2">{{userData.email}}</span>
-          </div>
-          <div class="d-flex align-items-center ml-30">
-            <i class="fa fa-mobile icon-color mobile-size"></i>
-            <span class="icon-title pl-2">{{userData.phone}}</span>
-          </div>
-          <section class="py-3 ml-30">
-            <div class="d-flex justify-content-between align-items-center custom-border-bottom-2px">
-              <h2 class="section-header">SKILLS</h2>
-              <span class="icon-color cursor-pointer" (click)="addingNewSkill = true">
-                <i  class="fa fa-plus"></i>
-              </span>
-            </div>
-            <div class="py-3 d-flex flex-wrap align-items-center">
-              <ng-container  *ngFor="let skill of skills">
-                <span class="skill-style">{{skill.name}}</span>
-              </ng-container>
-            </div>
-            <div class="input-group mb-3 pt-2" *ngIf="addingNewSkill">
-              <!-- <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">@</span>
-              </div> -->
-              <input type="text" [(ngModel)]="newSkillName" autofocus class="form-control" placeholder="Angular" aria-label="Username" aria-describedby="basic-addon1">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="addNewSkill()">Save</button>
-              </div>
-            </div>
-          </section>
-        <!-- </div> -->
-      </div>
-      <div class="col-9 h-100 pr-0">
-        <div class="profile-basic-info pl-3 w-100">
-          <h1 class="user-name">{{userData.name}}</h1>
-          <h2 class="user-designation">{{userData.jobName}}</h2>
-          <!-- <div class="w-100"> -->
-            <div class="custom-border-bottom"></div>
-          <!-- </div> -->
-          <div class="user-description">{{userData.jobDescription}}</div>
         </div>
-        <section class="pr-4">
-          <div class="d-flex justify-content-between custom-border-bottom-2px pt-4 pr-2">
-            <h3 class="section-header">Academic Details</h3>
-            <span class="icon-color cursor-pointer" (click)="addingAcademicCredentials = true">
-              <i class="fa fa-plus"></i>
-            </span>
+
+        <!-- Skills -->
+        <ng-container *ngFor="let skill of this.skills; let index=index">
+          <span class="skill badge badge-primary mr-1 py-1">{{skill.name}}</span>
+        </ng-container>
+
+      </section>
+      <!-- End Skills section -->
+
+      <!-- Languages section -->
+      <section class="languages mb-4">
+        <h3 class="text-uppercase text-blue h5 d-inline">Languages</h3> &nbsp;
+        <span class="icon-color cursor-pointer" (click)="addingLanguage = true">
+          <i class="fa fa-plus text-blue"></i>
+        </span>
+        <hr class="underline my-2 bg-blue w-75 mx-0 text-left">
+
+        <!-- Languages -->
+        <ng-container *ngFor="let language of this.languages; let index=index">
+          <div class="mb-2">
+            <p class="m-0">{{ language.name }}</p>
+            <small class="text-blue"><em>{{ language.proficiency }}</em></small>
           </div>
-          <div class="pt-2 row">
-            <ng-container *ngFor="let item of academicDetails; let index=index">
-              <div class="col-lg-6 position-relative">
-                <div class="card w-100 position-relative">
-                  <span  class="remove-icon cursor-pointer" (click)="removeQualification(index)">
-                    <i class="fa fa-close"></i>
-                  </span>
-                  <div class="card-body">
-                    <!-- <div class="d-flex justify-content-between align-items-center"> -->
-                      <h5 class="card-title font-weight-bold">{{item.qualification}}</h5>
-                    <!-- </div> -->
-                    <p class="card-text">
-                      <span class="font-weight-bold">
-                        Institution:
-                      </span>
-                      {{item.institutionName}}</p>
-                    <p class="card-text">
-                      <span class="font-weight-bold">YOP:&nbsp;</span>
-                      {{item.yop}}</p>
-                    <p class="card-text">
-                      <span class="font-weight-bold">
-                        city/country:&nbsp;
-                      </span>
-                      {{item.city}}</p>
-                    <!-- <p class="card-text">YOP: {{item.yop}}</p> -->
-                  </div>
-                </div>
-              </div>
-            </ng-container>
+        </ng-container>
+        <!-- End languages -->
+
+        <!-- Add new language -->
+        <form *ngIf="addingLanguage" [formGroup]="languageForm">
+          <hr class="my-3">
+          <div class="row">
+            <div class="col-12 mb-3">
+              <input type="text" class="form-control" autofocus formControlName="name" placeholder="Language">
+            </div>
+            <div class="col-12 mb-3">
+              <input type="text" class="form-control" formControlName="proficiency" placeholder="Language proficiency">
+            </div>
           </div>
-          <form class="pt-2 w-100" *ngIf="addingAcademicCredentials" [formGroup]="academicForm">
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" autofocus formControlName="institutionName" placeholder="Name of the Institution">
-            </div>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" formControlName="qualification" placeholder="Qualification">
-            </div>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" formControlName="yop" placeholder="Year of passign">
-            </div>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" formControlName="city" placeholder="City or Country">
-            </div>
-            <!-- <div class="input-group mb-3">
-              <input type="text" class="form-control" formControlName="achievement" placeholder="write your top achievement">
-            </div> -->
-            <div class="d-flex justify-content-end">
-              <!-- <div class="pr-3"> -->
-                <button type="button" class="btn btn-outline-danger mr-3" (click)="cancelAddQualification()">Cancel</button>
-              <!-- </div> -->
-              <!-- <div> -->
-                <button type="submit" [disabled]="!academicForm.valid" (click)="saveAcademicData()" class="btn btn-primary">Save</button>
-              <!-- </div> -->
-            </div>
-          </form>
-        </section>
+          <button type="submit" [disabled]="!languageForm.valid" (click)="saveLanguage()"
+            class="btn btn-primary bg-blue border-0">Save</button> &nbsp;
+          <button type="button" class="btn btn-outline-danger mr-3" (click)="cancelAddLanguage()">Cancel</button>
+        </form>
+
+      </section>
+      <!-- End Languages section -->
+
+      <!-- Interests section -->
+      <section class="languages mb-4">
+        <h3 class="text-uppercase text-blue h5 d-inline">INTERESTS</h3> &nbsp;
+        <span class="icon-color cursor-pointer" (click)="addingNewInterest = true">
+          <i class="fa fa-plus text-blue"></i>
+        </span>
+        <hr class="underline my-2 bg-blue w-50 mx-0 text-left">
+
+        <!-- interests -->
+        <div class="my-3">
+          <ng-container *ngFor="let interest of this.interests; let index=index">
+            <p class="mb-3 "><span class="border border-dark mb-2 rounded p-1">{{ interest.name}}</span></p>
+          </ng-container>
+        </div>
+        <!-- End interests-->
+
+        <!-- Add new interests -->
+        <div class="input-group mb-3 pt-2" *ngIf="addingNewInterest">
+          <input type="text" [(ngModel)]="interest" autofocus class="form-control" placeholder="Cooking"
+            aria-label="Interest" aria-describedby="basic-addon1">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+              (click)="addNewInterest()">Save</button>
+          </div>
+        </div>
+
+      </section>
+      <!-- End interests section -->
+
+    </div>
+
+    <!-- Education, Certificates, Projects and Achievements -->
+    <div class="col-md-9">
+      <!-- About you -->
+      <div class="jumbotron p-3 rounded-0 bg-blue text-white">
+        <h1 class="display-5">{{userData.name}}</h1>
+        <p class="lead mb-1">{{userData.keyAttributes}}</p>
+
+        <hr class="mx-0 my-2 text-left w-25 bg-white underline">
+        <p class="w-100">{{userData.about}}</p>
       </div>
+      <!-- End -->
+
+      <!-- Eduacation details -->
+      <section class="education-details">
+        <!-- Heading -->
+        <h1 class="h3 text-uppercase text-blue d-inline-block">
+          Eduacation
+        </h1>
+        &nbsp;
+        <span class="icon-color cursor-pointer" (click)="addingAcademicDetails = true">
+          <i class="fa fa-plus text-blue"></i>
+        </span>
+        <hr class="bg-blue mx-0 my-2 text-left w-25 underline">
+
+        <ng-container *ngFor="let degree of this.degrees; let index=index">
+          <!-- Education -->
+          <div class="mb-4">
+            <!-- Course name -->
+            <h5 class="text-blue font-weight-bold">{{degree.courseName}}</h5>
+            <!-- College/School name -->
+            <p class="m-0">{{degree.college}} </p>
+            <!-- University name -->
+            <p class="m-0">{{degree.university}} </p>
+            <!-- Year -->
+            <small class="text-blue font-weight-bold"><em>{{degree.duration}}</em></small>
+          </div>
+        </ng-container>
+        <!-- End Education  -->
+
+        <!-- Add new degree -->
+        <form *ngIf="addingAcademicDetails" [formGroup]="academicForm">
+          <hr class="my-3">
+          <div class="row w-75">
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" autofocus formControlName="courseName" placeholder="Course name">
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" formControlName="college" placeholder="College name">
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" formControlName="university" placeholder="University">
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" formControlName="duration" placeholder="Duration">
+            </div>
+          </div>
+          <button type="submit" [disabled]="!academicForm.valid" (click)="saveAcademicData()"
+            class="btn btn-primary bg-blue border-0">Save</button>&nbsp;
+          <button type="button" class="btn btn-outline-danger mr-3" (click)="cancelAddQualification()">Cancel</button>
+        </form>
+        <!-- End add new degree -->
+
+      </section>
+      <!-- End Education details -->
+
+      <!-- Certificates section -->
+      <section class="education-details mt-5">
+        <!-- Heading -->
+        <h1 class="h3 text-uppercase text-blue d-inline">Certificates</h1> &nbsp;
+        <span class="icon-color cursor-pointer" (click)="addingCertificate = true">
+          <i class="fa fa-plus text-blue"></i>
+        </span>
+        <hr class="bg-blue mx-0 my-2 text-left w-25 underline">
+
+        <!-- Certificates -->
+        <ng-container *ngFor="let certificate of this.certificates; let index=index">
+          <div class="mb-4">
+            <!-- Certificate name -->
+            <h5 class="text-blue font-weight-bold">{{certificate.certificateName}}</h5>
+            <!-- Certificate issued by -->
+            <p class="m-0 font-weight-bold"><em>{{certificate.issuedBy}}</em> </p>
+            <p class="m-0">{{certificate.description}}</p>
+            <!-- Issued on -->
+            <small class="text-blue font-weight-bold"><em>{{certificate.issuedOn}}</em></small>
+          </div>
+        </ng-container>
+        <!-- End Certificate -->
+
+        <!-- Add new certificate -->
+        <form *ngIf="addingCertificate" [formGroup]="certificateForm">
+          <hr class="my-3">
+          <div class="row w-75">
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" autofocus formControlName="certificateName"
+                placeholder="Certificate name">
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" formControlName="issuedBy" placeholder="Issued By">
+            </div>
+            <div class="col-md-6 mb-3">
+              <textarea formControlName="description" class="form-control"></textarea>
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" formControlName="issuedDate" placeholder="Issued Date">
+            </div>
+          </div>
+          <button type="submit" [disabled]="!certificateForm.valid" (click)="saveCerificate()"
+            class="btn btn-primary bg-blue border-0">Save</button>&nbsp;
+          <button type="button" class="btn btn-outline-danger mr-3" (click)="cancelAddCertificate()">Cancel</button>
+        </form>
+        <!-- End add new certificate -->
+
+      </section>
+      <!-- End Certifications section -->
+
+      <!-- Projects section -->
+      <section class="projects mt-5">
+        <!-- Heading -->
+        <h1 class="h3 text-uppercase text-blue d-inline">Projects</h1> &nbsp;
+        <span class="icon-color cursor-pointer" (click)="addingProject = true">
+          <i class="fa fa-plus text-blue"></i>
+        </span>
+        <hr class="underline my-2 bg-blue w-25 mx-0 text-left">
+        <!-- Project 1 -->
+        <ng-container *ngFor="let project of this.projects; let index=index">
+          <div class="mb-4">
+            <!-- Project name -->
+            <h5 class="text-blue font-weight-bold">{{project.projectName}}</h5>
+            <!-- About project -->
+            <p class="m-0">{{project.description}}</p>
+            <!-- Project duration -->
+            <small class="text-blue font-weight-bold"><em>{{project.duration}}</em></small>
+          </div>
+        </ng-container>
+        <!-- End Projects -->
+
+        <!-- Add new Project -->
+        <form *ngIf="addingProject" [formGroup]="projectForm">
+          <hr class="my-3">
+          <div class="row w-75">
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" autofocus formControlName="projectName"
+                placeholder="Project name">
+            </div>
+            <div class="col-md-6 mb-3">
+              <textarea formControlName="description" class="form-control"></textarea>
+            </div>
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" formControlName="duration" placeholder="Duration">
+            </div>
+          </div>
+          <button type="submit" [disabled]="!projectForm.valid" (click)="saveProject()"
+            class="btn btn-primary bg-blue border-0">Save</button>&nbsp;
+          <button type="button" class="btn btn-outline-danger mr-3" (click)="cancelAddProject()">Cancel</button>
+        </form>
+        <!-- End add new project -->
+
+      </section>
+      <!-- End Projects section -->
+
+      <!-- Achievements section -->
+      <section class="projects mt-5">
+        <!-- Heading -->
+        <h1 class="h3 text-uppercase text-blue d-inline">Achievements</h1> &nbsp;
+        <span class="icon-color cursor-pointer" (click)="addingAchievement = true">
+          <i class="fa fa-plus text-blue"></i>
+        </span>
+        <hr class="bg-blue mx-0 my-2 text-left w-25 underline">
+
+        <!-- Achievement -->
+        <ng-container *ngFor="let achievement of this.achievements; let index=index">
+          <div class="mb-4">
+            <!-- Achievement -->
+            <h5 class="text-blue font-weight-bold">{{ achievement.achievement }}</h5>
+            <!-- Description -->
+            <p class="m-0">{{achievement.description}}</p>
+          </div>
+        </ng-container>
+        <!-- End achievement-->
+
+        <!-- Add new Achievement -->
+        <form *ngIf="addingAchievement" [formGroup]="achievementForm">
+          <hr class="my-3">
+          <div class="row w-75">
+            <div class="col-md-6 mb-3">
+              <input type="text" class="form-control" autofocus formControlName="achievement" placeholder="Achievement">
+            </div>
+            <div class="col-md-6 mb-3">
+              <textarea formControlName="description" class="form-control"></textarea>
+            </div>
+          </div>
+          <button type="submit" [disabled]="!achievementForm.valid" (click)="saveAchievement()"
+            class="btn btn-primary bg-blue border-0">Save</button>&nbsp;
+          <button type="button" class="btn btn-outline-danger mr-3" (click)="cancelAddAchievement()">Cancel</button>
+        </form>
+        <!-- End add new Achievement -->
+
+      </section>
+      <!-- End Achievements section -->
     </div>
   </div>
- </div>
+</div>
+<footer class="bg-blue p-3 text-white mt-3">
+  <span class=""> Copyright &copy; Tantragnana. All Rights Reserved</span>
+  <span class="float-right text-white"><i class="fa fa-bolt" aria-hidden="true"></i> by <a class="text-white"
+      href="http://zysk.in/" target="_blank">Zysk Technologies</a>
+  </span>
+</footer>
