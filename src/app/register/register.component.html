@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row align-items-center justify-content-center registration-box">
+    <div class="col-md-6 text-center bg-light p-5 rounded">
+      <form [formGroup]="registerForm">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" formControlName="name" autofocus placeholder="Enter your name"
+            aria-label="Name">
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" formControlName="email" autofocus placeholder="Enter your email"
+            aria-label="Email">
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" formControlName="phone" autofocus
+            placeholder="Enter your contact number" aria-label="Contact number">
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" formControlName="keyAttributes"
+            placeholder="Add key attributes (2 to 3) that best describe you " aria-label="Key attributes">
+        </div>
+        <div class="input-group mb-3">
+          <textarea class="form-control" formControlName="about" placeholder="Describe yourself"
+            aria-label="About"></textarea>
+        </div>
+        <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary btn-block"
+          (click)="registerUser()">Register</button>
+      </form>
+    </div>
+  </div>
+</div>
